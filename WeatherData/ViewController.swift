@@ -134,7 +134,7 @@ class ViewController: UIViewController, UITableViewDataSource {
                 entries.append(ChartDataEntry(value: yValue, xIndex: idx))
             }
             
-            chartData = LineChartDataSet(yVals: entries, label: "Maximum Temperature")
+            chartData = LineChartDataSet(yVals: entries, label: "Maximum Temperature in ℃")
             fillColors = [
                 UIColor ( red: 0.9869, green: 0.1829, blue: 0.2316, alpha: 0.65 ).CGColor,
                 UIColor ( red: 0.7016, green: 0.0, blue: 0.0, alpha: 1.0 ).CGColor
@@ -151,7 +151,7 @@ class ViewController: UIViewController, UITableViewDataSource {
                 entries.append(ChartDataEntry(value: yValue, xIndex: idx))
             }
             
-            chartData = LineChartDataSet(yVals: entries, label: "Minimum Temperature")
+            chartData = LineChartDataSet(yVals: entries, label: "Minimum Temperature in ℃")
             
             fillColors = [
                 UIColor ( red: 0.1019, green: 0.8367, blue: 0.8948, alpha: 1.0 ).CGColor,
@@ -297,7 +297,7 @@ class ViewController: UIViewController, UITableViewDataSource {
             }
             
             let valueText = "\(Double(round(1000*value)/1000))"
-            cell.textLabel?.text = "\(valueText) \(unit)" 
+            cell.textLabel?.text = "\(valueText) \(unit)"
         }
         
         return cell
