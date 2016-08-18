@@ -188,7 +188,7 @@ class ViewController: UIViewController, UITableViewDataSource {
                 entries.append(ChartDataEntry(value: yValue, xIndex: idx))
             }
             
-            chartData = LineChartDataSet(yVals: entries, label: "Af days")
+            chartData = LineChartDataSet(yVals: entries, label: "Days of air frost")
             
             fillColors = [
                 UIColor ( red: 0.0, green: 0.8684, blue: 0.0222, alpha: 1.0 ).CGColor,
@@ -277,9 +277,27 @@ class ViewController: UIViewController, UITableViewDataSource {
             let dateText = Helper.monthForNumber(m) + " - \(y)"
             cell.detailTextLabel?.text = dateText
         }
+        
         if let value = self.chart.data?.dataSets.first?.yValForXIndex(indexPath.row) {
+            var unit = ""
+            
+            switch self.dataMode {
+            case .MinTemperature:
+                unit = "℃"
+            case .MaxTemperature:
+                unit = "℃"
+            case .Rain:
+                unit = "mm per sqm"
+            case .Sun:
+                unit = "hours"
+            case .Af: 
+                unit = "days"
+            default:
+                break
+            }
+            
             let valueText = "\(Double(round(1000*value)/1000))"
-            cell.textLabel?.text = valueText
+            cell.textLabel?.text = "\(valueText) \(unit)" 
         }
         
         return cell
